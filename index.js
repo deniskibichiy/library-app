@@ -1,6 +1,8 @@
 const myLibrary = [];
 
-
+function Book(title, author, pages) {
+    addBookToLibrary(title, author, pages);
+}
 
 function addBookToLibrary (title, author, pages) {
     let bookId = crypto.randomUUID();
