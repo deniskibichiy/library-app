@@ -1,3 +1,5 @@
+const container = document.querySelector(".container");
+
 const myLibrary = [];
 
 function Book (author, title, pages) {
@@ -18,19 +20,33 @@ const powersOfLaw = createBook ("Robert Greene", "The Art of War", 576);
 const atomicHabits = createBook("James Clear", "Atomic Habits", 898);
 function displayBooks () {
     myLibrary.forEach((item)=> {
-    for (let prop in item) {
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("bookDiv")
+        const bookTitle = document.createElement("p");
+        const bookAuthor = document.createElement("p");
+        const bookPages = document.createElement("p");
+        const readStatus = document.createElement("input");
+        readStatus.setAttribute("type", "checkbox");
+        for (let prop in item) {
         switch (prop) {
             case "author":
-                console.log(`Author is ${item[prop]}`);
+                bookAuthor.textContent = `Author is ${item[prop]}`;
+                bookDiv.appendChild(bookAuthor);
                 break;
             case "title":
-                console.log(`Title is ${item[prop]}`);
+                bookTitle.textContent = `Title is ${item[prop]}`;
+                bookDiv.appendChild(bookTitle)
                 break;
             case "pages":
-                console.log(`Number of pages is ${item[prop]}`);
+                bookPages.textContent = `Number of pages is ${item[prop]}`;
+                bookDiv.appendChild(bookPages);
+                break;
+            case "isRead":
+                console.log(`The Books's read status is ${item[prop]}`);
                 break;
          };
-    };
+    }
+    container.appendChild(bookDiv);
     })
 };
 
