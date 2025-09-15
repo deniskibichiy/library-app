@@ -15,11 +15,23 @@ function createBook (author, title, pages) {
     return newBook;
 }
 
-createBook ("Robert Greene", "The Art of War", 576);
+Book.prototype.toggleReadStatus= function () {
+    if (this.isRead ==false) {
+        this.isRead = true;
+    } else {
+        this.isRead = false;
+    }
+}
+
+
+const artOfWar = createBook ("Robert Greene", "The Art of War", 576);
+createBook("David Goggins", "Can't Hurt Me!", 498);
 createBook("James Clear", "Atomic Habits", 898);
 createBook("Jock Willink", "Discipline equals freedom", 98)
 createBook("Dostoevsky", "Crime and Punishment", 398);
+createBook("Viktor Frankl", "Man's Search for Meaning", 578);
 
+artOfWar.toggleReadStatus();
 
 function displayBooks (arr) {
     arr.forEach((item)=> {
@@ -83,6 +95,7 @@ container.addEventListener("click", (event) => {
     console.log(itemId)
     let bookToDelete = myLibrary.findIndex(bookObject => bookObject.BookID == itemId);
     myLibrary.splice(bookToDelete, 1);
+    myLibrary[bookToDelete+1].toggleReadStatus();
     console.log(myLibrary);
     container.textContent = " "
     displayBooks(myLibrary);
