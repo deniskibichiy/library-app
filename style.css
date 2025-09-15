@@ -61,6 +61,7 @@ form input {
     border: 1px solid rgb(95, 95, 63);
     height: 20px;
     border-radius: 5px;
+    font-size: 18px;
 }
 
 form input:focus {
@@ -68,4 +69,5 @@ form input:focus {
     height: 20px;
     border-radius: 5px;
     outline: none;
+    font-size: 18px;
 }
