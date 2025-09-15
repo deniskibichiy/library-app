@@ -44,8 +44,15 @@ function displayBooks (arr) {
         let readNode = document.createElement("p");
         const deleteButton = document.createElement("button");
         deleteButton.classList.add("btn-delete");
+        let buttonsDiv = document.createElement("div");
+        let toggleButton = document.createElement("button");
+        toggleButton.setAttribute("data-id",`${item.BookID}` )
+        toggleButton.classList.add("btn-toggle");
+        toggleButton.textContent = "Change Read Status";
         deleteButton.textContent = "Delete Book";
         deleteButton.setAttribute("data-id", `${item.BookID}`);
+        buttonsDiv.appendChild(deleteButton);
+        buttonsDiv.appendChild(toggleButton);
         readNode.textContent = `Read Status: `;
         readStatus.setAttribute("type", "checkbox");
         for (let prop in item) {
@@ -70,7 +77,7 @@ function displayBooks (arr) {
                     bookDiv.appendChild(readNode);
                 };
     }
-    bookDiv.appendChild(deleteButton)
+    bookDiv.appendChild(buttonsDiv);
     container.appendChild(bookDiv);
     })
 };
@@ -92,12 +99,17 @@ closeButton.addEventListener("click", () => {
 container.addEventListener("click", (event) => {
     if (event.target.classList.contains("btn-delete")) {
     let itemId = event.target.dataset.id;
-    console.log(itemId)
+    //console.log(itemId)
     let bookToDelete = myLibrary.findIndex(bookObject => bookObject.BookID == itemId);
     myLibrary.splice(bookToDelete, 1);
-    myLibrary[bookToDelete+1].toggleReadStatus();
-    console.log(myLibrary);
     container.textContent = " "
     displayBooks(myLibrary);
+     } else if (event.target.classList.contains("btn-toggle")) {
+        let itemId = event.target.dataset.id;
+        console.log(itemId)
+        let bookToToggle = myLibrary.findIndex(bookObject => bookObject.BookID == itemId);
+        myLibrary[bookToToggle].toggleReadStatus();
+        container.textContent = " "
+        displayBooks(myLibrary);
      }
 });

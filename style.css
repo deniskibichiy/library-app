@@ -20,12 +20,12 @@
 }
 
 button{
-    width: 150px;
+    width: 100px;
     margin-bottom: 30px;
     border: 0;
     border-radius: 10px;
     padding: 5px;
-    font-size: 18px;
+    font-size: 15px;
     cursor: pointer;
     background-color: rgb(95, 95, 63);
     color: white;
@@ -70,4 +70,11 @@ form input:focus {
     border-radius: 5px;
     outline: none;
     font-size: 18px;
+}
+
+.btn-toggle {
+    font-size: 14px;
+    padding: 5px;
+    width: 150px;
+    margin-left: 10px;
 }
