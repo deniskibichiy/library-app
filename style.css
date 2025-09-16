@@ -78,3 +78,20 @@ form input:focus {
     width: 150px;
     margin-left: 10px;
 }
+
+form div:nth-child(4) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+form div:nth-child(4) p {
+    border: none;
+}
+
+form div.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px 0 20px;
+}
