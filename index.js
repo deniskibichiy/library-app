@@ -111,15 +111,16 @@ container.addEventListener("click", (event) => {
 // Creating a book from the form
 closeButton.addEventListener("click", (event) => {
     event.preventDefault();
-    if (!authorValue || !titleValue || !pagesValue) {
-        alert("Input Values!");
-    }
     const authorValue = document.querySelector("#author").value;
     const titleValue = document.querySelector("#title").value;
     const pagesValue = document.querySelector("#pages").value;
+     if (!authorValue || !titleValue || !pagesValue) {
+        alert("Input Values!");} else {
     createBook(authorValue, titleValue, pagesValue);
-    container.textContent = " "
+    container.textContent = " ";
     displayBooks(myLibrary);
     document.querySelector(".form").reset();
     openDialog.close();
+    }
+
 })
