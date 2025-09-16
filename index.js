@@ -23,15 +23,9 @@ Book.prototype.toggleReadStatus= function () {
     }
 }
 
-
-const artOfWar = createBook ("Robert Greene", "The Art of War", 576);
 createBook("David Goggins", "Can't Hurt Me!", 498);
-createBook("James Clear", "Atomic Habits", 898);
-createBook("Jock Willink", "Discipline equals freedom", 98)
 createBook("Dostoevsky", "Crime and Punishment", 398);
 createBook("Viktor Frankl", "Man's Search for Meaning", 578);
-
-artOfWar.toggleReadStatus();
 
 function displayBooks (arr) {
     arr.forEach((item)=> {
@@ -91,8 +85,8 @@ btn.addEventListener("click",() => {
 
 })
 
-closeButton.addEventListener("click", () => {
-    //event.preventDefault();
+const cancelButton = document.querySelector(".cancel");
+cancelButton.addEventListener("click", () => {
     openDialog.close();
 })
 
@@ -113,3 +107,19 @@ container.addEventListener("click", (event) => {
         displayBooks(myLibrary);
      }
 });
+
+// Creating a book from the form
+closeButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (!authorValue || !titleValue || !pagesValue) {
+        alert("Input Values!");
+    }
+    const authorValue = document.querySelector("#author").value;
+    const titleValue = document.querySelector("#title").value;
+    const pagesValue = document.querySelector("#pages").value;
+    createBook(authorValue, titleValue, pagesValue);
+    container.textContent = " "
+    displayBooks(myLibrary);
+    document.querySelector(".form").reset();
+    openDialog.close();
+})
