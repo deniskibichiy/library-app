@@ -9,6 +9,13 @@ class Book {
         this.BookID = crypto.randomUUID();
         this.isRead = true;
     }
+    toggleReadStatus() {
+        if (this.isRead ==false) {
+            this.isRead = true;
+        } else {
+            this.isRead = false;
+        }
+    }
 }
 
 function createBook (author, title, pages) {
@@ -16,14 +23,14 @@ function createBook (author, title, pages) {
     myLibrary.push(newBook);
     return newBook;
 }
-
+/*
 Book.prototype.toggleReadStatus= function () {
     if (this.isRead ==false) {
         this.isRead = true;
     } else {
         this.isRead = false;
     }
-}
+} */
 
 createBook("David Goggins", "Can't Hurt Me!", 498);
 createBook("Dostoevsky", "Crime and Punishment", 398);
@@ -117,7 +124,8 @@ closeButton.addEventListener("click", (event) => {
     const titleValue = document.querySelector("#title").value;
     const pagesValue = document.querySelector("#pages").value;
      if (!authorValue || !titleValue || !pagesValue) {
-        alert("Input Values!");} else {
+        showError();
+    } else {
     createBook(authorValue, titleValue, pagesValue);
     container.textContent = " ";
     displayBooks(myLibrary);
@@ -126,3 +134,31 @@ closeButton.addEventListener("click", (event) => {
     }
 
 })
+
+
+
+
+function showError () {
+    const author = document.querySelector("#author");
+    const title = document.querySelector("#title");
+    const pages = document.querySelector("#pages");
+
+    const titleError = document.querySelector("#span-title");
+    const authorError = document.querySelector("#span-author");
+    const pagesError = document.querySelector("#span-pages");
+
+    if(!author.validity.valid) {
+        authorError.textContent = "Must have input Author's name!";
+        authorError.classList.add("active");
+    } else if (!title.validity.valid) {
+        titleError.textContent = "Must have title value";
+        titleError.classList.add("active");
+    }
+    else if (!pages.validity.valid) {
+        pagesError.textContent = "Must have number of pages";
+        pagesError.classList.add("active");
+    }
+}
+
+//form validation
+
