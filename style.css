@@ -95,3 +95,7 @@ form div.buttons {
     justify-content: space-between;
     padding: 0 20px 0 20px;
 }
+
+.dialog span {
+    color: red;
+}
