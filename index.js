@@ -123,9 +123,14 @@ closeButton.addEventListener("click", (event) => {
     const authorValue = document.querySelector("#author").value;
     const titleValue = document.querySelector("#title").value;
     const pagesValue = document.querySelector("#pages").value;
-     if (!authorValue || !titleValue || !pagesValue) {
+     if (!authorValue) {
         showError();
-    } else {
+    } else if (!titleValue) {
+        showError()
+    } else if (!pagesValue) {
+        showError()
+    }
+    else {
     createBook(authorValue, titleValue, pagesValue);
     container.textContent = " ";
     displayBooks(myLibrary);
@@ -157,6 +162,16 @@ function showError () {
     else if (!pages.validity.valid) {
         pagesError.textContent = "Must have number of pages";
         pagesError.classList.add("active");
+    }
+
+    if (author.validity.valid) {
+        authorError.textContent = "";
+    }
+    if (title.validity.valid) {
+        titleError.textContent = "";
+    }
+    if (pages.validity.valid) {
+        pagesError.textContent = "";
     }
 }
 
